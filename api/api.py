@@ -18,3 +18,19 @@ def status():
     }
 
     return expl_json
+
+@api.push('/api/app')
+def run():
+    data = request.json
+    
+    # doing something with the pushed data
+     
+    return {
+        "code" : 200,
+        "status" : "success",
+        "message" : "worked with the data"
+    }
+    
+    
+    
+    
