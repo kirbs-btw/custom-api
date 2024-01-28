@@ -7,19 +7,22 @@ api = Blueprint('api', __name__)
 def ping():
     package = request.args['package']
     return {
-        "message": "package recieved",
-        "package": package,
-            }
+        "code" : 200,
+        "type" : "ping",
+        "message" : package
+    }
 
 @api.route('/api/status')
 def status():
     expl_json = {
+        "code" : 200,
+        "type" : "status",
         "message" : "active"
     }
 
     return expl_json
 
-@api.push('/api/app')
+@api.post('/api/app')
 def run():
     data = request.json
     
@@ -27,7 +30,7 @@ def run():
      
     return {
         "code" : 200,
-        "status" : "success",
+        "type" : "success",
         "message" : "worked with the data"
     }
     
